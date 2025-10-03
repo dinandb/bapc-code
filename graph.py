@@ -2,12 +2,18 @@
 n = 5
 adj = [[] for _ in range(n)]  # each entry: list of (neighbor, weight)
 
-def add_edge(u, v, w):
+def add_edge_weighted(u, v, w):
     adj[u].append((v, w))       # directed edge with weight w
 
-def add_bi_edge(u, v, w):
+def add_edge(u,v):
+    add_edge_weighted(u,v,1)
+
+def add_bi_edge_weighted(u, v, w):
     adj[u].append((v, w))
     adj[v].append((u, w))       # undirected edge
+
+def add_bi_edge(u, v):
+    add_bi_edge_weighted(u, v, 1)
 
 def has_edge(u, v):
     return any(nei == v for nei, w in adj[u])  # O(deg(u))
