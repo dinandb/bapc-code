@@ -1,3 +1,5 @@
+
+
 def input_test():
     n = int(input())
     points = []
@@ -9,10 +11,11 @@ def input_test():
 def convex_hull(points):
     
     sorted_points = sorted(points, key=lambda p: (p[0], p[1]))
-    
+    cur_angle = 360
     for i, point in enumerate(sorted_points):
         if i > 0:
             previous = sorted_points[i-1]
+            
             
 
 

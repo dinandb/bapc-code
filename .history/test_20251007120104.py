@@ -9,11 +9,15 @@ def input_test():
 def convex_hull(points):
     
     sorted_points = sorted(points, key=lambda p: (p[0], p[1]))
-    
-    for i, point in enumerate(sorted_points):
-        if i > 0:
-            previous = sorted_points[i-1]
-            
+    return sorted_points
 
 
+print(convex_hull(input_test()))
 
+6
+0 0
+2 1
+3 1
+4 4
+5 1
+9 0

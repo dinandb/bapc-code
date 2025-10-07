@@ -11,9 +11,11 @@ def convex_hull(points):
     sorted_points = sorted(points, key=lambda p: (p[0], p[1]))
     
     for i, point in enumerate(sorted_points):
-        if i > 0:
-            previous = sorted_points[i-1]
-            
+        if i == 0:
+            continue
+        if point[0] == sorted_points[i-1][0]:
+            sorted_points[i] = (point[0], max(point[1], sorted_points[i-1][1]))
+
 
 
 

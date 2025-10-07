@@ -13,7 +13,6 @@ def convex_hull(points):
     for i, point in enumerate(sorted_points):
         if i > 0:
             previous = sorted_points[i-1]
-            
 
 
 
