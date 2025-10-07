@@ -1,0 +1,1 @@
+n, x = map(int, input().split()); a = list(map(int, input().split())); f = ((n * x) / sum(i**2 for i in a)) ** 0.5 if any(a) else 0; print(' '.join(str(round(i * f, 6)) for i in a) if any(a) else ' '.join('0' for _ in range(n)))
