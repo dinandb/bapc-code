@@ -14,8 +14,8 @@ def input_test():
 #         if i > 0:
 #             previous = sorted_points[i-1]
             
-# print(120 % 5)
+print(120 % 5)
 
-# arr = list(map(lambda x: int(float(x)*100), input().split()))
-# print(arr)
+arr = list(map(lambda x: int(x*100), input().split()))
+
 

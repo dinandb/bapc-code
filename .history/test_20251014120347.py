@@ -16,6 +16,6 @@ def input_test():
             
 # print(120 % 5)
 
-# arr = list(map(lambda x: int(float(x)*100), input().split()))
-# print(arr)
+arr = list(map(lambda x: int(float(x)*100), input().split()))
+print(arr)
 
