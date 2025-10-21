@@ -5,7 +5,7 @@ def softmax(z):
     return exp_z / np.sum(exp_z)
 
 # Example
-scores = np.array([2.0, 1.0, 1.0,1,1,1,1,1,0.1,0])
+scores = np.array([2.0, 1.0, 1.0,1,1,1,1,1,0.1])
 print(softmax(scores))
 
 
@@ -15,5 +15,5 @@ def scale(z):
     if np.isclose(total, 0.0):
         return np.zeros_like(z)
     return z / total
-scores1 = np.array([0.5,0.3])
-print(scale(scores1))
+
+print(scale(socres))

@@ -16,4 +16,4 @@ def scale(z):
         return np.zeros_like(z)
     return z / total
 scores1 = np.array([0.5,0.3])
-print(scale(scores1))
+print(scale(scores))
