@@ -53,7 +53,6 @@ vector<int> dijkstra(const vector<vector<pair<int,int>>>& graph, int src) {
             }
         }
     }
-    
     // Optionally return parent if you need paths
     return dist;
 }

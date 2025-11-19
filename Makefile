@@ -1,10 +1,9 @@
-
-
 CXX := g++
 CXXFLAGS := -std=gnu++17 -O3 -Ofast -march=native -pipe -flto -funroll-loops -DNDEBUG
-LDFLAGS := -flto
+LDFLAGS := -flto -Wl,--as-needed
 
-SRCS := A.cpp B.cpp C.cpp D.cpp E.cpp F.cpp G.cpp H.cpp I.cpp J.cpp K.cpp L.cpp
+# Only keep source files that actually exist
+SRCS := $(wildcard A.cpp B.cpp C.cpp D.cpp E.cpp F.cpp G.cpp H.cpp I.cpp J.cpp K.cpp L.cpp)
 EXES := $(SRCS:.cpp=)
 
 .PHONY: all clean
