@@ -6,13 +6,69 @@
 
 using namespace std;
 
+// A tuple of (index, value)
+struct Item {
+    int index;
+    int value;
+};
+
+// Comparator: only compare by value, ties broken by index
+struct Cmp {
+    bool operator()(const Item& a, const Item& b) const {
+        if (a.value != b.value) return a.value < b.value;
+        return a.index < b.index;   // ensure strict ordering
+    }
+};
+
+class PopSet {
+private:
+    set<Item, Cmp> s;
+
+public:
+    // Insert (index, value), return all items with smaller value
+    vector<Item> insert_and_pop_smaller(int index, int value) {
+        Item x{ index, value };
+
+        // find first element with value >= x.value
+        auto it = s.lower_bound(x);
+
+        // collect smaller items
+        vector<Item> smaller;
+        for (auto p = s.begin(); p != it; ++p)
+            smaller.push_back(*p);
+
+        // erase smaller items
+        s.erase(s.begin(), it);
+
+        // insert the new item
+        s.insert(x);
+
+        return smaller;
+    }
+};
+
+
+vector<int> findNextLarger(vector<int> input) {
+    vector<int> result(input.size());
+    PopSet ps;
+
+    for (int i = 0; i < input.size(); i++) {
+        vector<Item> smaller = ps.insert_and_pop_smaller(i, input[i]);
+        for (int j = 0; j < smaller.size(); j++) {
+            result.at(smaller[j].index) = i;
+        }
+    }
+
+    return result;
+}
+
 int main() {
 
     int n, q;
     cin >> n >> q;
     vector<int> cap ={};
-    
-    
+
+
     int c;
     for (int i = 0; i < n; i++) {
         cin >> c;
@@ -59,7 +115,7 @@ int main() {
     vector<int> amounts(n, 0);
     // nu de queries uitvoeren.
     for (int i = 0; i < command_amount.size(); i++) {
-        
+
         tuple<bool,int,int> cur_command = command_amount.at(i);
         // cout << "command = " << get<0>(cur_command) << ", " << get<1>(cur_command) << ", " << get<2>(cur_command) << endl;
         if (!get<0>(cur_command)) { // addition is true, hier moeten we komen als het niet addition is
@@ -74,7 +130,7 @@ int main() {
             int to_pour;
             while (amount_to_fill > 0 && cur_layer != -1) {
                 to_pour = min(cap.at(cur_layer) - amounts.at(cur_layer), amount_to_fill);
-                
+
                 // cout << "pouring " << to_pour << " at layer " << cur_layer << endl;
                 amounts.at(cur_layer) += to_pour;
                 // if (amounts.at(cur_layer) == cap.at(cur_layer)) {
@@ -101,8 +157,8 @@ int main() {
         }
     }
 
-    
-    
+
+
 
     return 0;
-}  
+}
