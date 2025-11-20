@@ -3,6 +3,7 @@
 #include <tuple>
 #include <algorithm>
 #include <string>
+#include <set>
 
 using namespace std;
 
@@ -49,7 +50,7 @@ public:
 
 
 vector<int> findNextLarger(vector<int> input) {
-    vector<int> result(input.size());
+    vector<int> result(input.size(), -1);
     PopSet ps;
 
     for (int i = 0; i < input.size(); i++) {
@@ -89,22 +90,9 @@ int main() {
             command_amount.push_back(make_tuple(false, layer-1, 0));
         }
     }
-    vector<int> first_increasing_cap(n, 0);
-    for (int i = 0; i < n; i++) {
-        int elt  = cap.at(i);
-        bool found_next = false;
-        for (int j = i+1; j < n; j++) {
-            if (cap.at(j) > elt) {
-                first_increasing_cap.at(i) = j;
-                found_next = true;
-                break;
-            }
-        }
-        if (!found_next)
-        {
-            first_increasing_cap.at(i) = -1;
-        }
-    }
+
+    vector<int> first_increasing_cap = findNextLarger(cap);
+
     // add something for the last element?
     // for (int i : cap) {
     //     cout << i << endl;
