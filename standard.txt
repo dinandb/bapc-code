@@ -27,6 +27,8 @@ int main() {
 
 
 hashmap:
+// hoe de fuck maak je een custom hasher
+
 #include <functional> // for std::hash
 
 hashmap[hasher(schedule)] = true;
