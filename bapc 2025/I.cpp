@@ -8,9 +8,9 @@ int main() {
     double w;
     cin >> n;
     cin >> w;
-
-    vector<tuple<int,int>> WM;
-    double p, t;
+    
+    vector<tuple<double,double>> WM;
+    int p, t;
     for (int i = 0; i < n; i++) {
         cin >> p >> t;
         
